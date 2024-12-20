@@ -1,0 +1,327 @@
+/* Chapter Hero 样式 */
+.chapter-hero {
+    position: relative;
+    height: 300px;
+    display: flex;
+    align-items: center;
+    padding: 2rem;
+    justify-content: center; /* 水平居中 */
+    text-align: center; /* 文本居中 */
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), 
+                      url('../chapterhero.avif');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    overflow: hidden;
+}
+
+.chapter-hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 100px;
+    background: linear-gradient(to bottom, var(--dark), transparent);
+    z-index: 1;
+}
+
+.chapter-hero .container {
+    position: relative;
+    z-index: 2;
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.chapter-title {
+    font-size: 2rem;
+    font-weight: 900;
+    color: var(--light);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    margin: 0;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+    .chapter-hero {
+        height: 200px;
+        padding: 1.5rem;
+    }
+
+    .chapter-title {
+        font-size: 2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .chapter-hero {
+        height: 150px;
+        padding: 1rem;
+    }
+
+    .chapter-title {
+        font-size: 1.5rem;
+    }
+}
+/* 漫画阅读区域样式 */
+.manga-reader {
+    background-color: var(--dark);
+    padding: 2rem 0;
+    min-height: 100vh;
+}
+
+.manga-reader .container {
+    max-width: 1000px; /* 控制最大宽度，确保图片不会过大 */
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+/* 漫画页面容器 */
+.manga-pages {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem; /* 页面之间的间距 */
+    align-items: center;
+}
+
+/* 单页样式 */
+.manga-image {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 8px; /* 圆角 */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3); /* 轻微阴影 */
+}
+
+/* 阅读导航 */
+.reader-navigation {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.8);
+    padding: 1rem;
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    z-index: 100;
+}
+
+.page-counter {
+    color: var(--light);
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    background: rgba(255, 255, 255, 0.1);
+}
+
+/* 导航按钮 */
+.prev-page,
+.next-page {
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 4px;
+    background-color: var(--primary-blue);
+    color: var(--light);
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.prev-page:hover,
+.next-page:hover {
+    background-color: var(--secondary-blue);
+}
+
+/* 图片加载动画 */
+.manga-image {
+    opacity: 0;
+    animation: fadeIn 0.3s ease forwards;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+    .manga-reader {
+        padding: 1rem 0;
+    }
+
+    .manga-pages {
+        gap: 1rem;
+    }
+
+    .reader-navigation {
+        padding: 0.8rem;
+    }
+
+    .prev-page,
+    .next-page {
+        padding: 0.4rem 0.8rem;
+        font-size: 0.9rem;
+    }
+}
+
+/* 移动端优化 */
+@media (max-width: 480px) {
+    .manga-reader .container {
+        padding: 0 0.5rem;
+    }
+
+    .manga-pages {
+        gap: 0.5rem;
+    }
+
+    .reader-navigation {
+        padding: 0.6rem;
+    }
+
+    .page-counter {
+        font-size: 0.9rem;
+        padding: 0.4rem 0.8rem;
+    }
+}
+
+/* 图片加载中状态 */
+.manga-image.loading {
+    min-height: 200px;
+    background: linear-gradient(90deg, 
+        rgba(255,255,255,0.1) 25%, 
+        rgba(255,255,255,0.2) 50%, 
+        rgba(255,255,255,0.1) 75%
+    );
+    background-size: 200% 100%;
+    animation: loading 1.5s infinite;
+}
+
+@keyframes loading {
+    0% { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+}
+
+/* SEO Content 样式 */
+.chapter-seo-content {
+    padding: 4rem 2rem;
+    background-color: var(--dark);
+    color: var(--light);
+}
+
+.chapter-seo-content .container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.chapter-seo-content article {
+    font-size: 1.1rem;
+    line-height: 1.8;
+}
+
+/* 标题样式 */
+.chapter-seo-content h2 {
+    font-size: 2.5rem;
+    color: var(--primary-blue);
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 3px solid var(--accent-orange);
+}
+
+.chapter-seo-content h3 {
+    font-size: 1.8rem;
+    color: var(--accent-orange);
+    margin: 2.5rem 0 1.5rem;
+}
+
+.chapter-seo-content h4 {
+    font-size: 1.4rem;
+    color: var(--light);
+    margin: 2rem 0 1rem;
+    opacity: 0.9;
+}
+
+/* 段落和列表样式 */
+.chapter-seo-content p {
+    margin-bottom: 1.5rem;
+    color: var(--light);
+    opacity: 0.9;
+}
+
+.chapter-seo-content ul {
+    margin: 1.5rem 0;
+    padding-left: 2rem;
+    list-style-type: none;
+}
+
+.chapter-seo-content ul li {
+    margin-bottom: 0.8rem;
+    position: relative;
+    padding-left: 1.5rem;
+}
+
+.chapter-seo-content ul li::before {
+    content: '•';
+    color: var(--accent-orange);
+    position: absolute;
+    left: 0;
+    font-size: 1.2em;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+    .chapter-seo-content {
+        padding: 3rem 1.5rem;
+    }
+
+    .chapter-seo-content h2 {
+        font-size: 2rem;
+    }
+
+    .chapter-seo-content h3 {
+        font-size: 1.6rem;
+    }
+
+    .chapter-seo-content h4 {
+        font-size: 1.3rem;
+    }
+
+    .chapter-seo-content article {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .chapter-seo-content {
+        padding: 2rem 1rem;
+    }
+
+    .chapter-seo-content h2 {
+        font-size: 1.8rem;
+    }
+
+    .chapter-seo-content h3 {
+        font-size: 1.4rem;
+    }
+
+    .chapter-seo-content h4 {
+        font-size: 1.2rem;
+    }
+
+    .chapter-seo-content ul {
+        padding-left: 1rem;
+    }
+}
+
+/* 打印样式 */
+@media print {
+    .chapter-seo-content {
+        background-color: white;
+        color: black;
+    }
+
+    .chapter-seo-content h2,
+    .chapter-seo-content h3,
+    .chapter-seo-content h4 {
+        color: black;
+    }
+}
